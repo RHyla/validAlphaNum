@@ -5,21 +5,21 @@
 
 echo "Zostałem wywołany z: $_"
 
-name=`ps -o ppid:1= -p $$` #komenda pokazujaca numer procecu pod którym kryje się terminal
+name=`ps -o ppid:1= -p $$` #komenda pokazująca numer procecu pod którym kryje się terminal
 
 p1=$$  #numer procesu aktualnego skryptu
 
-let p3=p1-p2 #roznica procesu skryptu 1 i procesu skryptu 2 wywolujacego 1 
+let p3=p1-p2 #różnica procesu skryptu pierwszego i procesu skryptu drugiego  wywołujacy pierszy skrypt
 
-if [ "$$" > "$name" ] ; then #jesli numer procesu skryptu jest wiekszy nz procesu termnalu
-	if [ "$p3" = "1" ] ; then  #roznica prosceos ronwa 1
+if [ "$$" > "$name" ] ; then #jeśli numer procesu skryptu jest większy niż procesu terminalu
+	if [ "$p3" = "1" ] ; then  #różnica procesów równa 1
 		echo "To jest uruchomione z innego skryptu"
 	else
 		echo "To jest uruchomione z linii polecen"
 	fi
 fi
 
-if [ "$p2" != "" ] ; then  #jesli porces sktrptu 2 nie jest pusta,, to usun wyexportowany numeer procesu
+if [ "$p2" != "" ] ; then  #jeśli porces skryptu 2 nie jest pusta, to usuń wyexportowany numer procesu
 	rm $p2
 fi
 
@@ -28,10 +28,10 @@ fi
 in_path()
 {
 
-#Funkcja usilujaca odnalezc program na podstawie jego nazwy i zmiennej PATH.
-#Zwraca 0 jezeli program istnieje i jest plikiem wykonywalnym albo 1 w przeciwnym wypadku.
-#Zwroc owage, ze tymaczasowo zmieniany jest separator IFS ale jego pierwotna wartość jest
-#przywracana na koncu funkcji 
+#Funkcja usiłująca odnaleźc program na podstawie jego nazwy i zmiennej PATH.
+#Zwraca 0 jeżeli program istnieje i jest plikiem wykonywalnym albo 1 w przeciwnym wypadku.
+#Tymaczasowo zmieniany jest separator IFS ale jego pierwotna wartość jest
+#przywracana na koncu funkcji. IFS oznacza separator pola wewnętrznego. Jest on używany przez Shell do określenia, jak wykonać dzielenie słów,tzn.jak rozpoznaje granice słów. W moim przypadku dwukropek jest takim separatorem. 
 
 cmd="$1"	ourpath="$2"	result=1
 oldIFS=$IFS	IFS=":"
