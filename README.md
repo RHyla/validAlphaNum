@@ -1,4 +1,4 @@
 # validAlphaNum 
 Repository of script 2
 
-Repozytorium w którym umieszczane są skrypty w bash
+The script checks if the data has been entered correctly.
